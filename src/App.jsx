@@ -27,7 +27,7 @@ function App() {
 
   const saveToClipboard = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/clipboard', { content });
+      const response = await axios.post(`https://online-clipboardbackend-1.onrender.com/clipboard`, { content });
       dispatch({ type: 'SET_CODE', payload: response.data.code });
       alert('Content saved to clipboard. Use the following code to retrieve: ' + response.data.code);
     } catch (error) {
@@ -37,7 +37,7 @@ function App() {
 
   const loadFromClipboard = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/clipboard/${code}`);
+      const response = await axios.get(`https://online-clipboardbackend-1.onrender.com/clipboard/${code}`);
       dispatch({ type: 'SET_LOADED_CONTENT', payload: response.data.content });
     } catch (error) {
       alert('Error loading clipboard content.');
